@@ -14,6 +14,9 @@ public class br: HTML {
     public override func needsEndTag() -> Bool {
         false
     }
+    public init() {
+        super.init{[""]}
+    }
     @available(*, unavailable)
     public override func attr(_ name: String, _ value: String) -> Self {
         return self

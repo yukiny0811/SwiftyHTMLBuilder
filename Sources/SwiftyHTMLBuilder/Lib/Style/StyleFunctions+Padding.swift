@@ -10,32 +10,32 @@ import Foundation
 public extension HTMLBase {
     
     @discardableResult
-    func padding(_ value: Float) -> Self {
-        self.css("padding", String(value))
+    func padding(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("padding", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func paddingTop(_ value: Float) -> Self {
-        self.css("padding-top", String(value))
+    func paddingTop(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("padding-top", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func paddingBottom(_ value: Float) -> Self {
-        self.css("padding-bottom", String(value))
+    func paddingBottom(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("padding-bottom", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func paddingLeft(_ value: Float) -> Self {
-        self.css("padding-left", String(value))
+    func paddingLeft(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("padding-left", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func paddingRight(_ value: Float) -> Self {
-        self.css("padding-right", String(value))
+    func paddingRight(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("padding-right", String(value) + unit.rawValue)
         return self
     }
     

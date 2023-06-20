@@ -11,11 +11,18 @@ public class hstack: HTML {
     public override func tagName() -> String? {
         "div"
     }
-    override public init(@HTMLBuilder _ contents: () -> [HTMLBase]) {
+    public init(alignment: HStackAlignment = .center, @HTMLBuilder _ contents: () -> [HTMLBase]) {
         super.init(contents)
         self.css("display", "flex")
         self.css("align-items", "center")
         self.css("justify-content", "center")
         self.css("flex-direction", "row")
+        self.css("justify-content", alignment.rawValue)
     }
+}
+
+public enum HStackAlignment: String {
+    case leading = "flex-start"
+    case center = "center"
+    case trailing = "flex-end"
 }

@@ -10,32 +10,32 @@ import Foundation
 public extension HTMLBase {
     
     @discardableResult
-    func margin(_ value: Float) -> Self {
-        self.css("margin", String(value))
+    func margin(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("margin", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func marginTop(_ value: Float) -> Self {
-        self.css("margin-top", String(value))
+    func marginTop(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("margin-top", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func marginBottom(_ value: Float) -> Self {
-        self.css("margin-bottom", String(value))
+    func marginBottom(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("margin-bottom", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func marginLeft(_ value: Float) -> Self {
-        self.css("margin-left", String(value))
+    func marginLeft(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("margin-left", String(value) + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func marginRight(_ value: Float) -> Self {
-        self.css("margin-right", String(value))
+    func marginRight(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
+        self.css("margin-right", String(value) + unit.rawValue)
         return self
     }
     

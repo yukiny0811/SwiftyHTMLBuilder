@@ -14,12 +14,10 @@ public enum HTMLCompiler {
     public static func resolve(with contents: [HTMLBase]) -> String {
         var resultString = ""
         for content in contents {
-            print(content.self, "yuru")
             resultString += content.process { newContents in
                 resolve(with: newContents)
             }
         }
-        print(resultString)
         return resultString
     }
 }
