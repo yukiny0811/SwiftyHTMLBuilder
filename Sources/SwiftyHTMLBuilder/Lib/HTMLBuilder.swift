@@ -9,8 +9,8 @@ import Foundation
 
 @resultBuilder
 public struct HTMLBuilder {
-    public static func buildBlock(_ component: any HTMLBase) -> any HTMLBase {
-        component
+    public static func buildBlock(_ component: any HTMLBase) -> [any HTMLBase] {
+        [component]
     }
     public static func buildBlock(_ components: any HTMLBase...) -> [any HTMLBase] {
         components
