@@ -19,6 +19,14 @@ import Foundation
 //}
 
 extension String: HTMLBase {
+    public func attr(_ name: String, _ value: String) -> String {
+        self
+    }
+    
+    public func css(_ name: String, _ value: String) -> String {
+        self
+    }
+    
     public var contents: [HTMLBase] {
         get {
             [self]

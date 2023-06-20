@@ -9,16 +9,10 @@ import Foundation
 
 @resultBuilder
 public struct HTMLBuilder {
-//    public static func buildBlock(_ component: HTMLBase) -> [HTMLBase] {
-//        [component]
-//    }
     public static func buildBlock(_ components: HTMLBase...) -> [HTMLBase] {
         components
     }
-//    public static func buildBlock(_ components: [HTML], _ c2: [HTML]) -> [HTML] {
-//        components + c2
-//    }
-//    public static func buildBlock(_ components: [HTML]) -> [HTML] {
-//        components
-//    }
+    public static func buildOptional(_ components: [HTMLBase]?) -> [HTMLBase] {
+        components ?? []
+    }
 }

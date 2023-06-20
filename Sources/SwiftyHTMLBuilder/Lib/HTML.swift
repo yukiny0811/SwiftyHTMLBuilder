@@ -56,4 +56,10 @@ open class HTML: HTMLBase {
 public protocol HTMLBase {
     var contents: [HTMLBase] { get set }
     func process(_ insideProcess: (_ contents: [HTMLBase]) -> String) -> String
+    
+    @discardableResult
+    func attr(_ name: String, _ value: String) -> Self
+    
+    @discardableResult
+    func css(_ name: String, _ value: String) -> Self
 }
