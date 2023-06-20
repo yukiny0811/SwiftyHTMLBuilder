@@ -8,16 +8,18 @@
 import Foundation
 
 public enum HTMLCompiler {
-    public static func compile(with creator: some HTML) -> String {
+    public static func compile(with creator: some HTMLBase) -> String {
         return resolve(with: creator.contents)
     }
-    public static func resolve(with contents: [HTML]) -> String {
+    public static func resolve(with contents: [HTMLBase]) -> String {
         var resultString = ""
         for content in contents {
+            print(content.self, "yuru")
             resultString += content.process { newContents in
                 resolve(with: newContents)
             }
         }
+        print(resultString)
         return resultString
     }
 }

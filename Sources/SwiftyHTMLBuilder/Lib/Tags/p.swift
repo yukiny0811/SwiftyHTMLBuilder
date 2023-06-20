@@ -7,13 +7,11 @@
 
 import Foundation
 
-public struct p: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init(@HTMLBuilder _ contents: () -> [HTML]) {
-        self.contents = contents()
+public class p: HTML {
+    public override func tagName() -> String? {
+        "p"
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<p" + argsString + ">" + insideProcess(self.contents) + "</p>"
+    override public init(@HTMLBuilder _ contents: () -> [HTMLBase]) {
+        super.init(contents)
     }
 }

@@ -7,24 +7,23 @@
 
 import Foundation
 
-public struct all: HTML {
-    public let id: String
-    public var contents: [HTML]
-    public var styleString: String = ""
-    public init(@HTMLBuilder _ contents: () -> [HTML], styleString: String = "", id: String = UUID().uuidString) {
-        self.contents = contents()
-        self.styleString = styleString
-        self.id = id
+public class all: HTML {
+    public override func needsEndTag() -> Bool {
+        false
     }
-    public init(_ contents: [HTML], styleString: String = "", id: String = UUID().uuidString) {
-        self.contents = contents
-        self.styleString = styleString
-        self.id = id
+    public override func process(_ insideProcess: ([HTMLBase]) -> String) -> String {
+        styleTagString + insideProcess(self.contents)
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<style>*{" + styleString + "}</style>" + insideProcess(self.contents)
+    public override var styleTagString: String {
+        "<style>*{" + styleStrings + "}</style>"
     }
-    public func styled(@StyleBuilder _ styles: () -> String) -> Self {
-        return Self.init(self.contents, styleString: styles())
+    
+    @available(*, unavailable)
+    public override func attr(_ name: String, _ value: String) -> Self {
+        return self
+    }
+    
+    override public init(@HTMLBuilder _ contents: () -> [HTMLBase]) {
+        super.init(contents)
     }
 }

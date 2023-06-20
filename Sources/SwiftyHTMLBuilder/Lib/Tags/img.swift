@@ -7,15 +7,16 @@
 
 import Foundation
 
-public struct img: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init(src: String, alt: String) {
-        self.contents = []
-        self.argsString += " src=" + src.quoted
-        self.argsString += " alt=" + alt.quoted
+public class img: HTML {
+    public override func tagName() -> String? {
+        "img"
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<img" + argsString + ">"
+    public override func needsEndTag() -> Bool {
+        false
+    }
+    public convenience init(src: String, alt: String) {
+        self.init{[]}
+        self.attr("src", src)
+        self.attr("alt", alt)
     }
 }

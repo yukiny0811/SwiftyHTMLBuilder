@@ -7,13 +7,19 @@
 
 import Foundation
 
-public struct doctype: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init() {
-        self.contents = []
+public class doctype: HTML {
+    public convenience init() {
+        self.init{[]}
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<!DOCTYPE html>" + insideProcess(self.contents)
+    public override func process(_ insideProcess: (_ contents: [HTMLBase]) -> String) -> String {
+        "<!DOCTYPE html>"
+    }
+    @available(*, unavailable)
+    public override func attr(_ name: String, _ value: String) -> Self {
+        return self
+    }
+    @available(*, unavailable)
+    public override func css(_ name: String, _ value: String) -> Self {
+        return self
     }
 }

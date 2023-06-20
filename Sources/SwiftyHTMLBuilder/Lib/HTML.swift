@@ -7,13 +7,53 @@
 
 import Foundation
 
-public protocol HTML {
-    @HTMLBuilder var contents: [HTML] { get }
-    func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String
+open class HTML: HTMLBase {
+    public var id = "ID" + UUID().uuidString.replacingOccurrences(of: "-", with: "")
+    public var idAttrString: String {
+        " id=" + id.quoted
+    }
+    public var styleTagString: String {
+        "<style>#\(id){" + styleStrings + "}</style>"
+    }
+    public func tagName() -> String? {
+        nil
+    }
+    public func needsEndTag() -> Bool {
+        true
+    }
+    public var contents: [HTMLBase]
+    public var attributeStrings: String = ""
+    public var styleStrings: String = ""
+    
+    public init(@HTMLBuilder _ contents: () -> [HTMLBase]) {
+        self.contents = contents()
+    }
+    public func process(_ insideProcess: (_ contents: [HTMLBase]) -> String) -> String {
+        if let tag = tagName() {
+            if needsEndTag() {
+                return styleTagString + "<" + tag + idAttrString + attributeStrings + ">" + insideProcess(self.contents) + "</\(tag)>"
+            } else {
+                return styleTagString + "<" + tag + idAttrString + attributeStrings + ">" + insideProcess(self.contents)
+            }
+        } else {
+            return insideProcess(self.contents)
+        }
+    }
+    
+    @discardableResult
+    public func attr(_ name: String, _ value: String) -> Self {
+        attributeStrings += " " + name + "=" + value.quoted
+        return self
+    }
+    
+    @discardableResult
+    public func css(_ name: String, _ value: String) -> Self {
+        styleStrings += name + ":" + value + ";"
+        return self
+    }
 }
 
-public extension HTML {
-    func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        insideProcess(self.contents)
-    }
+public protocol HTMLBase {
+    var contents: [HTMLBase] { get set }
+    func process(_ insideProcess: (_ contents: [HTMLBase]) -> String) -> String
 }

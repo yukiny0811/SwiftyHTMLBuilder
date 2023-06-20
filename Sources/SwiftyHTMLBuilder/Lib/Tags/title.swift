@@ -7,14 +7,19 @@
 
 import Foundation
 
-public struct title: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init(_ t: String) {
-        self.contents = []
-        self.argsString = t
+public class title: HTML {
+    var title: String = ""
+    public override func tagName() -> String? {
+        "title"
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<title>" + argsString + "</title>"
+    public override func needsEndTag() -> Bool {
+        true
+    }
+    public convenience init(_ t: String) {
+        self.init{[]}
+        self.title = t
+    }
+    public override func process(_ insideProcess: (_ contents: [HTMLBase]) -> String) -> String {
+        "<title>" + title + "</title>"
     }
 }

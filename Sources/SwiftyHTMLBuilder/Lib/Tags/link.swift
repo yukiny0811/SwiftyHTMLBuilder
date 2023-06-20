@@ -7,18 +7,19 @@
 
 import Foundation
 
-public struct link: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init(rel: String, href: String, crossOrigin: Bool = false) {
-        self.contents = []
-        self.argsString += " rel=" + rel.quoted
-        self.argsString += " href=" + href.quoted
-        if crossOrigin {
-            self.argsString += " crossorigin"
-        }
+public class link: HTML {
+    public override func tagName() -> String? {
+        "link"
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<link" + argsString + ">"
+    public override func needsEndTag() -> Bool {
+        false
+    }
+    public convenience init(rel: String, href: String, crossOrigin: Bool = false) {
+        self.init({[]})
+        self.attr("rel", rel)
+        self.attr("href", href)
+        if crossOrigin {
+            self.attr("crossorigin", "true")
+        }
     }
 }

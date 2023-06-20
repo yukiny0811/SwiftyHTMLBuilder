@@ -7,13 +7,19 @@
 
 import Foundation
 
-public struct br: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init() {
-        self.contents = []
+public class br: HTML {
+    public override func tagName() -> String? {
+        "br"
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<br>"
+    public override func needsEndTag() -> Bool {
+        false
+    }
+    @available(*, unavailable)
+    public override func attr(_ name: String, _ value: String) -> Self {
+        return self
+    }
+    @available(*, unavailable)
+    public override func css(_ name: String, _ value: String) -> Self {
+        return self
     }
 }

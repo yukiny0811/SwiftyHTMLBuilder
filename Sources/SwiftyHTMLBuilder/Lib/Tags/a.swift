@@ -7,14 +7,15 @@
 
 import Foundation
 
-public struct a: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init(href: String, @HTMLBuilder _ contents: () -> [HTML]) {
-        self.contents = contents()
-        self.argsString += " href=" + href.quoted
+public class a: HTML {
+    public override func tagName() -> String? {
+        "a"
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<a" + argsString + ">" + insideProcess(self.contents) + "</a>"
+    public convenience init(href: String, @HTMLBuilder _ contents: () -> [HTML]) {
+        self.init(contents)
+        self.attr("href", href)
+    }
+    override public init(@HTMLBuilder _ contents: () -> [HTMLBase]) {
+        super.init(contents)
     }
 }

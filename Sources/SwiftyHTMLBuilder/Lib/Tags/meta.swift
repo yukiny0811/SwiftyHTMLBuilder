@@ -7,20 +7,21 @@
 
 import Foundation
 
-public struct meta: HTML {
-    public var contents: [HTML]
-    public var argsString: String = ""
-    public init(charset: CharsetEncodingType) {
-        self.contents = []
-        self.argsString += " charset=" + charset.rawValue.quoted
+public class meta: HTML {
+    public override func tagName() -> String? {
+        "meta"
     }
-    public init(name: MetaName, content: String) {
-        self.contents = []
-        self.argsString += " name=" + name.rawValue.quoted
-        self.argsString += " content=" + content.quoted
+    public override func needsEndTag() -> Bool {
+        false
     }
-    public func process(_ insideProcess: (_ contents: [HTML]) -> String) -> String {
-        "<meta" + argsString + ">" + insideProcess(self.contents)
+    public convenience init(charset: CharsetEncodingType) {
+        self.init({[]})
+        self.attr("charset", charset.rawValue)
+    }
+    public convenience init(name: MetaName, content: String) {
+        self.init{[]}
+        self.attr("name", name.rawValue)
+        self.attr("content", content)
     }
 }
 
