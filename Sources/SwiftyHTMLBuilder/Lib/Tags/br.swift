@@ -22,7 +22,7 @@ public class br: HTML {
         return self
     }
     @available(*, unavailable)
-    public override func css(_ name: String, _ value: String) -> Self {
+    public override func css(_ name: String, _ value: String, mediaQuery: MediaQueryType = .none) -> Self {
         return self
     }
 }

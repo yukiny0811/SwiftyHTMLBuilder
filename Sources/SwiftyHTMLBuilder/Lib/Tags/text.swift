@@ -23,7 +23,7 @@ extension String: HTMLBase {
         self
     }
     
-    public func css(_ name: String, _ value: String) -> String {
+    public func css(_ name: String, _ value: String, mediaQuery: MediaQueryType = .none) -> String {
         self
     }
     

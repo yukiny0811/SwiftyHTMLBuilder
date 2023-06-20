@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension HTMLBase {
+public extension HTML {
     
     @discardableResult
     func margin(_ value: Float, unit: CSSSizeUnit = .none) -> Self {

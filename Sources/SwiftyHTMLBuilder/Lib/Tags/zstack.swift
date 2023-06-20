@@ -20,7 +20,7 @@ public class zstack: HTML {
         self.css("position", "relative")
         for i in 0..<self.contents.count {
             if i == 0 { continue }
-            self.contents[i].css("position", "absolute")
+            self.contents[i].css("position", "absolute", mediaQuery: .none)
         }
     }
 }

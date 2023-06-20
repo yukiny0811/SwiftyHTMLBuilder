@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension HTMLBase {
+public extension HTML {
     
     @discardableResult
     func color(_ value: String) -> Self {

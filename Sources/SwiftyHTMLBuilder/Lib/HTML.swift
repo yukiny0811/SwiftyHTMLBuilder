@@ -13,7 +13,7 @@ open class HTML: HTMLBase {
         " id=" + id.quoted
     }
     public var styleTagString: String {
-        "<style>#\(id){" + styleStrings + "}</style>"
+        "<style>#\(id){" + styleStrings + "}" + mediaQueryString + "</style>"
     }
     public func tagName() -> String? {
         nil
@@ -21,6 +21,7 @@ open class HTML: HTMLBase {
     public func needsEndTag() -> Bool {
         true
     }
+    public var mediaQueryString: String = ""
     public var contents: [HTMLBase]
     public var attributeStrings: String = ""
     public var styleStrings: String = ""
@@ -47,8 +48,15 @@ open class HTML: HTMLBase {
     }
     
     @discardableResult
-    public func css(_ name: String, _ value: String) -> Self {
-        styleStrings += name + ":" + value + ";"
+    public func css(_ name: String, _ value: String, mediaQuery: MediaQueryType = .none) -> Self {
+        switch mediaQuery {
+        case .none:
+            styleStrings += name + ":" + value + ";"
+        case .minWidth(_):
+            mediaQueryString += mediaQuery.buildMediaQueryString(for: "#\(id){"+name+":"+value+";"+"}")
+        case .maxWidth(_):
+            mediaQueryString += mediaQuery.buildMediaQueryString(for: "#\(id){"+name+":"+value+";"+"}")
+        }
         return self
     }
 }
@@ -61,5 +69,5 @@ public protocol HTMLBase {
     func attr(_ name: String, _ value: String) -> Self
     
     @discardableResult
-    func css(_ name: String, _ value: String) -> Self
+    func css(_ name: String, _ value: String, mediaQuery: MediaQueryType) -> Self
 }

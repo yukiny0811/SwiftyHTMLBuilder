@@ -7,17 +7,17 @@
 
 import Foundation
 
-public extension HTMLBase {
+public extension HTML {
     
     @discardableResult
-    func width(_ value: Float, unit: CSSSizeUnit = .none) -> Self {
-        self.css("width", String(value) + unit.rawValue)
+    func width(_ value: Float, unit: CSSSizeUnit = .none, for mediaQuery: MediaQueryType = .none) -> Self {
+        self.css("width", String(value) + unit.rawValue, mediaQuery: mediaQuery)
         return self
     }
     
     @discardableResult
-    func width(_ value: String) -> Self {
-        self.css("width", value)
+    func width(_ value: String, for mediaQuery: MediaQueryType = .none) -> Self {
+        self.css("width", value, mediaQuery: mediaQuery)
         return self
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension HTMLBase {
+public extension HTML {
     @discardableResult
     func position(_ value: CSSPosition) -> Self {
         self.css("padding-right", value.rawValue)
