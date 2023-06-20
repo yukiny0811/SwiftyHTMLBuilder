@@ -11,7 +11,7 @@ public class a: HTML {
     public override func tagName() -> String? {
         "a"
     }
-    public convenience init(href: String, @HTMLBuilder _ contents: () -> [HTML]) {
+    public convenience init(href: String, @HTMLBuilder _ contents: () -> [HTMLBase]) {
         self.init(contents)
         self.attr("href", href)
     }
