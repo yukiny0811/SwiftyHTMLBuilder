@@ -9,19 +9,19 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_15.2.app
 jobs:
   build:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v3
       - name: Build macOS
         run: xcodebuild -scheme SwiftyHTMLBuilder build -destination "generic/platform=macOS"
   test:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v3
       - name: Test macOS
-        run: xcodebuild -scheme SwiftyHTMLBuilderTests test -destination "platform=macOS,arch=x86_64"
+        run: xcodebuild -scheme SwiftyHTMLBuilderTests test -destination "platform=macOS,arch=arm64"
   build-examples:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v3
       - name: Build macOS Example
