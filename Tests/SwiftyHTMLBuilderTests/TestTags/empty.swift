@@ -8,6 +8,7 @@
 @testable import SwiftyHTMLBuilder
 import SnapshotTesting
 import XCTest
+import WebKit
 
 final class Test_empty: XCTestCase {
     
@@ -17,10 +18,11 @@ final class Test_empty: XCTestCase {
                 empty{}
             }
         }
-        let vc = SnapshotVC_300()
         let compiled = TestHTML().compile()
-        vc.webView.loadHTMLString(compiled, baseURL: nil)
-        assertSnapshot(of: vc, as: .image, timeout: 15)
+        let webView = WKWebView()
+        webView.frame = .init(x: 0, y: 0, width: 300, height: 300)
+        webView.loadHTMLString(compiled, baseURL: nil)
+        assertSnapshot(of: webView, as: .image, timeout: 15)
     }
     
     func test_empty_compiled() throws {
