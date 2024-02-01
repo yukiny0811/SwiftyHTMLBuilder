@@ -10,12 +10,14 @@ import SnapshotTesting
 import XCTest
 import WebKit
 
-final class Test_doctype: XCTestCase {
+final class Test_link: XCTestCase {
     
-    func test_doctype() throws {
+    func test_link() throws {
         class TestHTML: HTML {
             var body: some HTMLBlock & AnyObject {
-                doctype()
+                head {
+                    link(rel: "stylesheet", href: "style.css")
+                }
             }
         }
         let compiled = TestHTML().compile()
@@ -25,13 +27,15 @@ final class Test_doctype: XCTestCase {
         assertSnapshot(of: webView, as: .image, timeout: 15)
     }
     
-    func test_doctype_compiled() throws {
+    func test_link_compiled() throws {
         class TestHTML: HTML {
             var body: some HTMLBlock & AnyObject {
-                doctype()
+                head {
+                    link(rel: "stylesheet", href: "style.css")
+                }
             }
         }
         let compiled = TestHTML().compile()
-        XCTAssertTrue(compiled.contains("<!DOCTYPE html"))
+        XCTAssertTrue(compiled.contains("rel=\"stylesheet\" href=\"style.css\""))
     }
 }
