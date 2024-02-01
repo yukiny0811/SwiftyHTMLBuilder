@@ -16,7 +16,7 @@ let outputPath = URL(string: projectRootPath)!
 
 class MyHtml: HTML {
     var content: HTMLBlock {
-        group {
+        document {
             doctype()
             html {
                 MyHead().build()
@@ -42,6 +42,12 @@ class MyBody: HTML {
             a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
                 text("Github")
             }
+            hstack(equalSpacing: true) {
+                p("test")
+                p("test")
+                p("test")
+            }
+            .width(100, unit: .vw)
             MediaQuery(.minWidth, value: "800px") {
                 h2("media query")
                     .width(200, unit: .px)
