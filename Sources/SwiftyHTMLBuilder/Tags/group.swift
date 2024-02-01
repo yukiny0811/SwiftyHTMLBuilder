@@ -26,4 +26,8 @@ public class group: HTMLBlock {
     public required init(@HTMLBuilder _ contents: () -> [HTMLBlock]) {
         self.contents = contents()
     }
+    
+    public func process(_ insideProcess: ([HTMLBlock]) -> String) -> String {
+        return insideProcess(contents)
+    }
 }
