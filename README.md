@@ -6,7 +6,7 @@
 [![Platform Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fyukiny0811%2FSwiftyHTMLBuilder%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/yukiny0811/SwiftyHTMLBuilder)
 [![License](https://img.shields.io/github/license/yukiny0811/SwiftyHTMLBuilder)](https://github.com/yukiny0811/SwiftyHTMLBuilder/blob/main/LICENSE)
 
-Swift DSL for HTML documents!
+Swift DSL for HTML documents
 
 ## Key Features
 
@@ -56,6 +56,8 @@ class MyBody: HTML {
 }
 ```
 
+<img width="1337" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/b4a37312-d7a2-402f-bdbf-d5e9213f52ab">
+
 ### Autocomplete for Styling
 
 Autocomplete for css, making it easier to apply CSS and other styling properties directly in your Swift code.
@@ -99,6 +101,29 @@ vstack(spacing: "10px") {
 }
 ```
 
+<img width="1312" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/ee48d874-e8f8-4bd6-a61a-cca54995a41e">
+
 ## Usage
+
+### HTML Document Template
+
+```.swift
+class MyHtml: HTML {
+    var content: HTMLBlock {
+        document {
+            doctype()
+            html {
+                head {
+                    meta(charset: .utf8)
+                    title("SwiftyHTMLBuilder Example")
+                }
+                body {
+                    h1("SwiftyHTMLBuilder")
+                }
+            }
+        }
+    }
+}
+```
 
 
