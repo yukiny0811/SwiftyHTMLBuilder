@@ -14,7 +14,7 @@ final class Test_doctype: XCTestCase {
     
     func test_doctype() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 doctype()
             }
         }
@@ -27,7 +27,7 @@ final class Test_doctype: XCTestCase {
     
     func test_doctype_compiled() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 doctype()
             }
         }

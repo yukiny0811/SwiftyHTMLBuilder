@@ -14,7 +14,7 @@ final class Test_empty: XCTestCase {
     
     func test_empty() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 empty()
             }
         }
@@ -27,7 +27,7 @@ final class Test_empty: XCTestCase {
     
     func test_empty_compiled() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 empty()
             }
         }

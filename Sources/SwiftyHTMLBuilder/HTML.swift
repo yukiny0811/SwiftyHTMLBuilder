@@ -9,15 +9,15 @@ import Foundation
 
 public protocol HTML {
     @HTMLBuilder
-    var body: any HTMLBlock { get }
+    var content: any HTMLBlock { get }
 }
 
 public extension HTML {
     func compile() -> String {
-        HTMLCompiler.compile(with: self.body)
+        HTMLCompiler.compile(with: self.content)
     }
     
     func build() -> HTMLBlock {
-        self.body
+        self.content
     }
 }

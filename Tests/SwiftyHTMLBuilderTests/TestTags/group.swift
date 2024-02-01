@@ -14,7 +14,7 @@ final class Test_group: XCTestCase {
     
     func test_group() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 group{}
             }
         }
@@ -27,7 +27,7 @@ final class Test_group: XCTestCase {
     
     func test_group_compiled() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 group{}
             }
         }

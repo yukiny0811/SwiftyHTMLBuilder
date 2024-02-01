@@ -15,7 +15,7 @@ let outputPath = URL(string: projectRootPath)!
     .absoluteString
 
 class MyHtml: HTML {
-    var body: HTMLBlock {
+    var content: HTMLBlock {
         group {
             doctype()
             html {

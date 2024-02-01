@@ -13,7 +13,7 @@ import WebKit
 final class Test_head: XCTestCase {
     func test_head() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 head {}
             }
         }

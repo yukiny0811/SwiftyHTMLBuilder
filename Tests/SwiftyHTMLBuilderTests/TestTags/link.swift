@@ -14,7 +14,7 @@ final class Test_link: XCTestCase {
     
     func test_link() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 head {
                     link(rel: "stylesheet", href: "style.css")
                 }
@@ -29,7 +29,7 @@ final class Test_link: XCTestCase {
     
     func test_link_compiled() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 head {
                     link(rel: "stylesheet", href: "style.css")
                 }

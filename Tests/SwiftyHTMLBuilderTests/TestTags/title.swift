@@ -13,7 +13,7 @@ import WebKit
 final class Test_title: XCTestCase {
     func test_title() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 head {
                     title("SwiftyHTMLBuilder")
                 }

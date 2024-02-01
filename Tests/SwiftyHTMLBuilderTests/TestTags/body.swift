@@ -10,15 +10,11 @@ import SnapshotTesting
 import XCTest
 import WebKit
 
-final class Test_meta: XCTestCase {
-    func test_meta() throws {
+final class Test_body: XCTestCase {
+    func test_body() throws {
         class TestHTML: HTML {
             var content: HTMLBlock {
-                head {
-                    meta(charset: .utf8)
-                    meta(viewport: "aaa")
-                    meta(description: "aaa")
-                }
+                body {}
             }
         }
         let compiled = TestHTML().compile()

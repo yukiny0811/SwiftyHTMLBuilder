@@ -13,7 +13,7 @@ import WebKit
 final class Test_text: XCTestCase {
     func test_text() throws {
         class TestHTML: HTML {
-            var body: some HTMLBlock & AnyObject {
+            var content: HTMLBlock {
                 text("ABCDE12345")
             }
         }
