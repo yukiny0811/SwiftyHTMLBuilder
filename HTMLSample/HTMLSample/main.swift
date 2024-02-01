@@ -22,12 +22,18 @@ class MyHtml: HTML {
                 meta(charset: .utf8)
                 title("SwiftyHTMLBuilder")
             }
-            body {
-                p("this is p")
-                a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
-                    text("this is link")
-                    text("SwiftyHTMLBuilder")
-                }
+            MyBody().build()
+        }
+    }
+}
+
+class MyBody: HTML {
+    var content: HTMLBlock {
+        body {
+            p("this is p")
+            a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
+                text("this is link")
+                text("SwiftyHTMLBuilder")
             }
         }
     }
