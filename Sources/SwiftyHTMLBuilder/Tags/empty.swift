@@ -29,4 +29,7 @@ public class empty: HTMLBlock {
         self.contents = contents()
     }
     
+    public func process(_ insideProcess: ([HTMLBlock]) -> String) -> String {
+        return ""
+    }
 }
