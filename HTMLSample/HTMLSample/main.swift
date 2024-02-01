@@ -39,42 +39,62 @@ class MyBody: HTML {
     var content: HTMLBlock {
         body {
             h1("SwiftyHTMLBuilder")
-            a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
-                text("Github")
+            
+            hstack(spacing: "100px") {
+                p("hstack1")
+                p("hstack1")
+                p("hstack1")
             }
-            vstack(spacing: "100px") {
-                p("test")
-                    .backgroundColor(.white)
-                p("test")
-                    .backgroundColor(.white)
-                p("test")
-                    .backgroundColor(.white)
+            .backgroundColor(.aliceblue)
+            
+            hstack(equalSpacing: true) {
+                p("hstack2")
+                p("hstack2")
+                p("hstack2")
             }
-            .backgroundColor(.red)
-            .width(100, unit: .percentage)
+            
+            vstack(spacing: "10px") {
+                p("vstack1")
+                p("vstack2")
+                p("vstack3")
+            }
+            .backgroundColor(.aliceblue)
             
             zstack(vAlign: .center, hAlign: .center) {
-                h1("ZStack Test")
-                h2("aaa")
-                    .color(.red)
+                img(src: "image.png")
+                    .width(300, unit: .px)
+                vstack(spacing: "0px") {
+                    h2("Swifty")
+                        .margin(0)
+                    h2("HTML")
+                        .margin(0)
+                }
+                .color(.white)
             }
-            .backgroundColor(.cyan)
-            .width(100, unit: .percentage)
-            .height(300, unit: .px)
-            MediaQuery(.minWidth, value: "800px") {
-                h2("media query")
-                    .width(200, unit: .px)
-                    .color(.white)
-                    .backgroundColor(.blue)
-                    .css("display", "block")
-            } falseContents: {
-                h2("media query")
-                    .width(200, unit: .px)
-                    .color(.white)
-                    .backgroundColor(.green)
-                    .css("display", "block")
+            
+            vstack(spacing: "10px") {
+                for i in 0..<10 {
+                    if i.isMultiple(of: 2) {
+                        MyCell(count: i).build()
+                    }
+                }
             }
         }
+    }
+}
+
+class MyCell: HTML {
+    let count: Int
+    init(count: Int) {
+        self.count = count
+    }
+    var content: HTMLBlock {
+        hstack(spaceBetween: true) {
+            h3("cell")
+            h3(String(count))
+        }
+        .width(400, unit: .px)
+        .backgroundColor(.aliceblue)
     }
 }
 

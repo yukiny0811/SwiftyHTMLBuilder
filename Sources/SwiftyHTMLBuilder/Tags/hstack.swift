@@ -54,4 +54,16 @@ public class hstack: HTMLBlock {
             self.css("justify-content", hAlign.rawValue)
         }
     }
+    
+    public convenience init(vAlign: FlexAlignment = .center, hAlign: FlexAlignment = .center, spaceBetween: Bool, @HTMLBuilder _ contents: () -> [HTMLBlock]) {
+        self.init(contents)
+        self.css("display", "flex")
+        self.css("flex-direction", "row")
+        self.css("align-items", vAlign.rawValue)
+        if spaceBetween {
+            self.css("justify-content", "space-between")
+        } else {
+            self.css("justify-content", hAlign.rawValue)
+        }
+    }
 }

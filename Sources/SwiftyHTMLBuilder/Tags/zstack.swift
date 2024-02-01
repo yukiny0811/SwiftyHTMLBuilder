@@ -30,12 +30,19 @@ public class zstack: HTMLBlock {
     public convenience init(vAlign: FlexAlignment, hAlign: FlexAlignment, @HTMLBuilder _ contents: () -> [HTMLBlock]) {
         var processedContents: [HTMLBlock] = []
         for (i, content) in contents().enumerated() {
-            processedContents.append(
-                content
-                    .css("z-stack", i+1)
-                    .position(.absolute)
-            )
-            
+            if i == 0 {
+                processedContents.append(
+                    content
+                        .css("z-stack", i+1)
+                        .position(.relative)
+                )
+            } else {
+                processedContents.append(
+                    content
+                        .css("z-stack", i+1)
+                        .position(.absolute)
+                )
+            }
         }
         self.init { processedContents }
         self.css("display", "flex")
