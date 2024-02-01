@@ -6,22 +6,22 @@ on:
     branches: [ main ]
   workflow_dispatch:
 env:
-  DEVELOPER_DIR: /Applications/Xcode.app
+  DEVELOPER_DIR: /Applications/Xcode_15.2.app
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
       - name: Build macOS
         run: xcodebuild -scheme SwiftyHTMLBuilder build -destination "generic/platform=macOS"
   test:
-    runs-on: macOS-latest
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
       - name: Test macOS
         run: xcodebuild -scheme SwiftyHTMLBuilderTests test -destination "platform=macOS,arch=x86_64"
   build-examples:
-    runs-on: macOS-latest
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
       - name: Build macOS Example

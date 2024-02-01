@@ -5,6 +5,10 @@
 //  Created by Yuki Kuwashima on 2023/06/20.
 //
 
+@testable import SwiftyHTMLBuilder
+import SnapshotTesting
+import XCTest
+
 final class Test_text: XCTestCase {
     func test_text() throws {
         class TestHTML: HTML {
