@@ -23,7 +23,7 @@ public class empty: HTMLBlock {
     
     public var additionalInsideString: String = ""
     
-    convenience init() {
+    public convenience init() {
         self.init{ [] as [HTMLBlock] }
     }
     

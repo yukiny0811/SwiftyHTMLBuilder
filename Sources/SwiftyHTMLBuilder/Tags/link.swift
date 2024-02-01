@@ -23,7 +23,7 @@ public class link: HTMLBlock {
     
     public var additionalInsideString: String = ""
     
-    convenience init(rel: String, href: String, crossOrigin: Bool = false) {
+    public convenience init(rel: String, href: String, crossOrigin: Bool = false) {
         self.init { [] as [HTMLBlock] }
         self.attr("rel", rel)
         self.attr("href", href)

@@ -23,7 +23,7 @@ public class meta: HTMLBlock {
     
     public var additionalInsideString: String = ""
     
-    convenience init(charset: String) {
+    public convenience init(charset: String) {
         self.init { [] as [HTMLBlock] }
         self.attr("charset", charset)
     }
