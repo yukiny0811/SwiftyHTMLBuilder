@@ -38,7 +38,31 @@ class MyHead: HTML {
 class MyBody: HTML {
     var content: HTMLBlock {
         body {
-            h1("SwiftyHTMLBuilder")
+            
+            MediaQuery(.minWidth, value: "500px") {
+                nav {
+                    hstack(spaceBetween: true) {
+                        h1("SwiftyHTMLBuilder")
+                        hstack(hAlign: .center, spacing: "10px") {
+                            a(href: "https://github.com") { text("AAAAA") }
+                            a(href: "https://github.com") { text("BBBBB") }
+                            a(href: "https://github.com") { text("CCCCC") }
+                        }
+                    }
+                }
+                .backgroundColor(.aliceblue)
+            } falseContents: {
+                nav {
+                    vstack(equalSpacing: true) {
+                        a(href: "https://github.com") { text("AAAAA") }
+                        a(href: "https://github.com") { text("BBBBB") }
+                        a(href: "https://github.com") { text("CCCCC") }
+                    }
+                    .width(100, unit: .vw)
+                    .backgroundColor(.aliceblue)
+                }
+                h1("SwiftyHTMLBuilder")
+            }
             
             hstack(spacing: "100px") {
                 p("hstack1")
