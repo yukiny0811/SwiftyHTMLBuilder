@@ -28,11 +28,6 @@ public class p: HTMLBlock {
         self.additionalInsideString = value
     }
     
-    public convenience init(_ value: String, @HTMLBuilder _ contents: () -> [HTMLBlock]) {
-        self.init(contents)
-        self.additionalInsideString = value
-    }
-    
     public required init(@HTMLBuilder _ contents: () -> [HTMLBlock]) {
         self.contents = contents()
     }
