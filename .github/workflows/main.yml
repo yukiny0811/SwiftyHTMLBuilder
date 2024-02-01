@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+env:
+  DEVELOPER_DIR: /Applications/Xcode.app
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build macOS
+        run: xcodebuild -scheme SwiftyHTMLBuilder build -destination "generic/platform=macOS"
+  test:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test macOS
+        run: xcodebuild -scheme SwiftyHTMLBuilder test -destination "platform=macOS,arch=x86_64"
+  build-examples:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build macOS Example
+        run: cd HTMLSample && xcodebuild -scheme HTMLSample build -destination "generic/platform=macOS"
