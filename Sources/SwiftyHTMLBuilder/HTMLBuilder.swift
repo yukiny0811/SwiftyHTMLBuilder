@@ -9,8 +9,8 @@ import Foundation
 
 @resultBuilder
 public struct HTMLBuilder {
-    public static func buildBlock(_ component: HTMLBlock) -> [HTMLBlock] {
-        [component]
+    public static func buildBlock(_ component: HTMLBlock) -> HTMLBlock {
+        component
     }
     public static func buildBlock(_ components: HTMLBlock...) -> [HTMLBlock] {
         components

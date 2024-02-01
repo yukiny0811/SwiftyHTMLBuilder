@@ -15,10 +15,12 @@ let outputPath = URL(string: projectRootPath)!
     .absoluteString
 
 class MyHtml: HTML {
-    var body: some HTMLBlock & AnyObject {
-        div {
-            p("test")
-                .css("color", "red")
+    var body: HTMLBlock {
+        group {
+            doctype()
+            html {
+                
+            }
         }
     }
 }

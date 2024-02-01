@@ -8,12 +8,16 @@
 import Foundation
 
 public protocol HTML {
-    associatedtype Body: HTMLBlock
-    var body: Body { get }
+    @HTMLBuilder
+    var body: any HTMLBlock { get }
 }
 
 public extension HTML {
     func compile() -> String {
         HTMLCompiler.compile(with: self.body)
+    }
+    
+    func build() -> HTMLBlock {
+        self.body
     }
 }
