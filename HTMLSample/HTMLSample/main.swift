@@ -42,12 +42,16 @@ class MyBody: HTML {
             a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
                 text("Github")
             }
-            hstack(equalSpacing: true) {
+            vstack(spacing: "100px") {
                 p("test")
+                    .backgroundColor(.white)
                 p("test")
+                    .backgroundColor(.white)
                 p("test")
+                    .backgroundColor(.white)
             }
-            .width(100, unit: .vw)
+            .backgroundColor(.red)
+            .width(100, unit: .percentage)
             MediaQuery(.minWidth, value: "800px") {
                 h2("media query")
                     .width(200, unit: .px)
