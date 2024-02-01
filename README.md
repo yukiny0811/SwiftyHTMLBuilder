@@ -126,4 +126,125 @@ class MyHtml: HTML {
 }
 ```
 
+### Xcode Project Setup
+
+Create new Xcode project for Command Line Tools (macOS), nad add this package via Swift Package Manager.
+
+For your convenience, setup your project with following steps. 
+
+1. Edit your Scheme and append new environment variable MY_ROOT
+<img width="916" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/95f3635f-67a3-4e88-ac40-0fa29bab429a">
+
+2. Create new Post-action for Run. This will make Xcode to open index.html everytime you run the project.
+
+<img width="926" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/bcb0dc67-cfa5-483d-9ec2-f628721101e4">
+
+3. Organize your project directory structure
+<img width="261" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/2a9623e0-2e6f-4821-8457-3f336411902f">
+
+4. Create URL object for outputPath (to index.html)
+```.swift
+import Foundation
+import SwiftyHTMLBuilder
+
+let projectRootPath = ProcessInfo.processInfo.environment["MY_ROOT"]!
+let outputPath = URL(string: projectRootPath)!
+    .appending(path: "Output")
+    .appending(path: "index.html")
+    .absoluteString
+```
+5. Write your HTML
+```.swift
+class MyHTML: HTML {
+    var content: HTMLBlock {
+        ...
+    }
+}
+```
+
+6. Compile your swift code to HTML code.
+```.swift
+let compiled = MyHtml().compile()
+```
+
+7. Write to index.html
+```.swift
+try! compiled.write(toFile: outputPath, atomically: true, encoding: .utf8)
+```
+
+### Convert HTML to HTMLBlock 
+
+Use ```.build()``` to convert.
+
+```.swift
+class MyHtml: HTML {
+    var content: HTMLBlock {
+        document {
+            doctype()
+            html {
+                MyHead().build()
+                MyBody().build()
+            }
+        }
+    }
+}
+```
+
+### Use Undefined css, attribute, or HTML components
+
+Because not all components are covered in this package, you may need to manually write css, attribute, or HTML components.
+Contributions are welcome.
+
+```.swift
+img(src: "image.png")
+    .css("z-index", "1")
+    .attr("width", "300px")
+
+// use text() to write raw HTML code
+text("<style> * { padding: 0; margin: 0; } </style>")
+```
+
+## Covered Features
+
+### HTML Tags
+
+- html
+- head
+- body
+- a
+- br
+- div
+- doctype
+- footer
+- f1
+- f2
+- f3
+- f4
+- f5
+- f6
+- header
+- img
+- link
+- meta
+- nav
+- p
+- section
+- span
+- title
+- text (original)
+- empty (original)
+- group (original)
+- document (original)
+- vstack (original)
+- hstack (original)
+- zstack (original)
+
+### CSS Styles
+- background-color
+- color
+- width
+- height
+- padding
+- margin
+- position
 
