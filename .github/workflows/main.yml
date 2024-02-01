@@ -13,16 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build macOS
-        run: xcodebuild -scheme SwiftyHTMLBuilder build -destination "generic/platform=macOS"
+        run: xcodebuild -scheme SwiftyHTMLBuilder build -destination "generic/platform=macOS" | xcpretty
   test:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v3
       - name: Test macOS
-        run: xcodebuild -scheme SwiftyHTMLBuilderTests test -destination "platform=macOS,arch=arm64"
+        run: xcodebuild -scheme SwiftyHTMLBuilderTests test -destination "platform=macOS,arch=arm64" | xcpretty
   build-examples:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v3
       - name: Build macOS Example
-        run: xcodebuild -scheme HTMLSample build -destination "generic/platform=macOS"
+        run: xcodebuild -scheme HTMLSample build -destination "generic/platform=macOS" | xcpretty
