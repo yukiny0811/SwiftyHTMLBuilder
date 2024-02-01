@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class empty: HTMLBlock {
+public class doctype: HTMLBlock {
     
     public var id: String = Util.createHtmlID()
     
     public var contents: [HTMLBlock]
     
-    public var tagName: String = ""
+    public var tagName: String = "!DOCTYPE html"
     
-    public var needsEndTag: Bool = true
+    public var needsEndTag: Bool = false
     
     public var attributeString: String = ""
     
@@ -24,14 +24,10 @@ public class empty: HTMLBlock {
     public var additionalInsideString: String = ""
     
     convenience init() {
-        self.init{ [] as [HTMLBlock] }
+        self.init { [] as [HTMLBlock] }
     }
     
     public required init(@HTMLBuilder _ contents: () -> [HTMLBlock]) {
         self.contents = contents()
-    }
-    
-    public func process(_ insideProcess: ([HTMLBlock]) -> String) -> String {
-        return ""
     }
 }
