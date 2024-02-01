@@ -7,13 +7,13 @@
 
 import Foundation
 
-public class p: HTMLBlock {
+public class a: HTMLBlock {
     
     public var id: String = Util.createHtmlID()
     
     public var contents: [HTMLBlock] = []
     
-    public var tagName: String = "p"
+    public var tagName: String = "a"
     
     public var needsEndTag: Bool = true
     
@@ -23,14 +23,14 @@ public class p: HTMLBlock {
     
     public var additionalInsideString: String = ""
     
-    public convenience init(_ value: String) {
+    public convenience init(href: String) {
         self.init { [] as [HTMLBlock] }
-        self.additionalInsideString = value
+        self.attr("href", href)
     }
     
-    public convenience init(_ value: String, @HTMLBuilder _ contents: () -> [HTMLBlock]) {
+    public convenience init(href: String, @HTMLBuilder _ contents: () -> [HTMLBlock]) {
         self.init(contents)
-        self.additionalInsideString = value
+        self.attr("href", href)
     }
     
     public required init(@HTMLBuilder _ contents: () -> [HTMLBlock]) {

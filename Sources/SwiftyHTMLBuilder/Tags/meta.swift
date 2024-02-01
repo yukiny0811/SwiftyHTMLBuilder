@@ -28,30 +28,30 @@ public class meta: HTMLBlock {
         self.attr("charset", charset)
     }
     
-    convenience init(charset: CharsetEncodingType) {
+    public convenience init(charset: CharsetEncodingType) {
         self.init { [] as [HTMLBlock] }
         self.attr("charset", charset.rawValue)
     }
     
-    convenience init(description: String) {
+    public convenience init(description: String) {
         self.init { [] as [HTMLBlock] }
         self.attr("name", MetaName.description.rawValue)
         self.attr("content", description)
     }
     
-    convenience init(viewport: String) {
+    public convenience init(viewport: String) {
         self.init { [] as [HTMLBlock] }
         self.attr("name", MetaName.viewport.rawValue)
         self.attr("content", viewport)
     }
     
-    convenience init(name: String, content: String) {
+    public convenience init(name: String, content: String) {
         self.init { [] as [HTMLBlock] }
         self.attr("name", name)
         self.attr("content", content)
     }
     
-    convenience init(property: String, content: String) {
+    public convenience init(property: String, content: String) {
         self.init { [] as [HTMLBlock] }
         self.attr("property", property)
         self.attr("content", content)
