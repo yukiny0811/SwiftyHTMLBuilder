@@ -58,6 +58,39 @@ class MyBody: HTML {
 
 <img width="1337" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/b4a37312-d7a2-402f-bdbf-d5e9213f52ab">
 
+### Easy-To-Write MediaQuery
+
+You can easily write responsive codes with MediaQuery class.
+
+```.swift
+MediaQuery(.minWidth, value: "500px") {
+    nav {
+        hstack(spaceBetween: true) {
+            h1("SwiftyHTMLBuilder")
+            hstack(hAlign: .center, spacing: "10px") {
+                a(href: "https://github.com") { text("AAAAA") }
+                a(href: "https://github.com") { text("BBBBB") }
+                a(href: "https://github.com") { text("CCCCC") }
+            }
+        }
+    }
+    .backgroundColor(.aliceblue)
+} falseContents: {
+    nav {
+        vstack(equalSpacing: true) {
+            a(href: "https://github.com") { text("AAAAA") }
+            a(href: "https://github.com") { text("BBBBB") }
+            a(href: "https://github.com") { text("CCCCC") }
+        }
+        .width(100, unit: .vw)
+        .backgroundColor(.aliceblue)
+    }
+    h1("SwiftyHTMLBuilder")
+}
+```
+
+<img width="1015" alt="image" src="https://github.com/yukiny0811/SwiftyHTMLBuilder/assets/28947703/175e6f86-357b-4bea-a43b-29292593af45">
+
 ### Autocomplete for Styling
 
 Autocomplete for css, making it easier to apply CSS and other styling properties directly in your Swift code.
