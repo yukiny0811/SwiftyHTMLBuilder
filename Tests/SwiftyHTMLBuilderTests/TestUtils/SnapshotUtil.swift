@@ -6,23 +6,14 @@
 //
 
 import WebKit
+import AppKit
 
 class SnapshotVC_1000: NSViewController {
     static let size: CGFloat = 1000
     var webView: WKWebView = .init()
-    override func viewDidLoad() {
+    override func loadView() {
         webView.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
-        self.view.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
-        self.view.addSubview(webView)
-    }
-}
-
-class SnapshotVC_300: NSViewController {
-    static let size: CGFloat = 300
-    var webView: WKWebView = .init()
-    override func viewDidLoad() {
-        webView.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
-        self.view.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
+        self.view = .init(frame: .init(x: 0, y: 0, width: Self.size, height: Self.size))
         self.view.addSubview(webView)
     }
 }
@@ -30,9 +21,19 @@ class SnapshotVC_300: NSViewController {
 class SnapshotVC_600: NSViewController {
     static let size: CGFloat = 600
     var webView: WKWebView = .init()
-    override func viewDidLoad() {
+    override func loadView() {
         webView.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
-        self.view.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
+        self.view = .init(frame: .init(x: 0, y: 0, width: Self.size, height: Self.size))
+        self.view.addSubview(webView)
+    }
+}
+
+class SnapshotVC_300: NSViewController {
+    static let size: CGFloat = 300
+    var webView: WKWebView = .init()
+    override func loadView() {
+        webView.frame = .init(x: 0, y: 0, width: Self.size, height: Self.size)
+        self.view = .init(frame: .init(x: 0, y: 0, width: Self.size, height: Self.size))
         self.view.addSubview(webView)
     }
 }
