@@ -19,10 +19,18 @@ class MyHtml: HTML {
         group {
             doctype()
             html {
-                meta(charset: .utf8)
-                title("SwiftyHTMLBuilder")
+                MyHead().build()
+                MyBody().build()
             }
-            MyBody().build()
+        }
+    }
+}
+
+class MyHead: HTML {
+    var content: HTMLBlock {
+        head {
+            meta(charset: .utf8)
+            title("SwiftyHTMLBuilder Example")
         }
     }
 }
@@ -30,9 +38,9 @@ class MyHtml: HTML {
 class MyBody: HTML {
     var content: HTMLBlock {
         body {
-            h1("this is h1")
+            h1("SwiftyHTMLBuilder")
             a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
-                text("this is link")
+                text("Github")
             }
             MediaQuery(.minWidth, value: "800px") {
                 h2("media query")
