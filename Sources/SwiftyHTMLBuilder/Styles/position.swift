@@ -2,12 +2,12 @@
 //  File.swift
 //  
 //
-//  Created by Yuki Kuwashima on 2023/10/06.
+//  Created by Yuki Kuwashima on 2024/02/01.
 //
 
 import Foundation
 
-public extension HTML {
+public extension HTMLBlock {
     
     @discardableResult
     func position(_ value: CSSPosition) -> Self {
@@ -16,9 +16,8 @@ public extension HTML {
     }
     
     @discardableResult
-    func position(_ value: HTMLValueConvertible) -> Self {
-        self.css("position", value.convertToString())
+    func position(_ value: HTMLStringConvertible) -> Self {
+        self.css("position", value.htmlString)
         return self
     }
-    
 }

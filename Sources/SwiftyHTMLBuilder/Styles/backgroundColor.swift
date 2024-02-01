@@ -2,22 +2,22 @@
 //  File.swift
 //  
 //
-//  Created by Yuki Kuwashima on 2023/10/06.
+//  Created by Yuki Kuwashima on 2024/02/01.
 //
 
 import Foundation
 
-public extension HTML {
+public extension HTMLBlock {
     
     @discardableResult
-    func backgroundColor(r: HTMLValueConvertible, g: HTMLValueConvertible, b: HTMLValueConvertible) -> Self {
-        self.css("background-color", "rgb(\(r.convertToString()),\(g.convertToString()),\(b.convertToString()))")
+    func backgroundColor(r: HTMLStringConvertible, g: HTMLStringConvertible, b: HTMLStringConvertible) -> Self {
+        self.css("background-color", "rgb(\(r.htmlString),\(g.htmlString),\(b.htmlString))")
         return self
     }
     
     @discardableResult
-    func backgroundColor(r: HTMLValueConvertible, g: HTMLValueConvertible, b: HTMLValueConvertible, a: HTMLValueConvertible) -> Self {
-        self.css("background-color", "rgba(\(r.convertToString()),\(g.convertToString()),\(b.convertToString()),\(a.convertToString()))")
+    func backgroundColor(r: HTMLStringConvertible, g: HTMLStringConvertible, b: HTMLStringConvertible, a: HTMLStringConvertible) -> Self {
+        self.css("background-color", "rgba(\(r.htmlString),\(g.htmlString),\(b.htmlString),\(a.htmlString))")
         return self
     }
     
@@ -28,8 +28,9 @@ public extension HTML {
     }
     
     @discardableResult
-    func backgroundColor(_ color: HTMLValueConvertible) -> Self {
-        self.css("background-color", color.convertToString())
+    func backgroundColor(_ color: HTMLStringConvertible) -> Self {
+        self.css("background-color", color.htmlString)
         return self
     }
+    
 }

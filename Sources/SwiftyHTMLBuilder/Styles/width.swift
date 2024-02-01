@@ -2,22 +2,22 @@
 //  File.swift
 //  
 //
-//  Created by Yuki Kuwashima on 2023/10/06.
+//  Created by Yuki Kuwashima on 2024/02/01.
 //
 
 import Foundation
 
-public extension HTML {
+public extension HTMLBlock {
     
     @discardableResult
-    func width(_ value: HTMLValueConvertible, unit: CSSSizeUnit = .none) -> Self {
-        self.css("width", value.convertToString() + unit.rawValue)
+    func width(_ value: HTMLStringConvertible, unit: CSSSizeUnit) -> Self {
+        self.css("width", value.htmlString + unit.rawValue)
         return self
     }
     
     @discardableResult
-    func width(_ value: HTMLValueConvertible) -> Self {
-        self.css("width", value.convertToString())
+    func width(_ value: HTMLStringConvertible) -> Self {
+        self.css("width", value.htmlString)
         return self
     }
     
