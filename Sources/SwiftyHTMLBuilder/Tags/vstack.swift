@@ -48,11 +48,10 @@ public class vstack: HTMLBlock {
         self.css("display", "flex")
         self.css("flex-direction", "column")
         self.css("align-items", hAlign.rawValue)
-        self.css("justify-content", vAlign.rawValue)
-//        if equalSpacing {
-//            self.css("justify-content", "space-evenly")
-//        } else {
-//            self.css("justify-content", hAlign.rawValue)
-//        }
+        if equalSpacing {
+            self.css("justify-content", "space-evenly")
+        } else {
+            self.css("justify-content", vAlign.rawValue)
+        }
     }
 }

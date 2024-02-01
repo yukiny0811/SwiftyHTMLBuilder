@@ -52,6 +52,15 @@ class MyBody: HTML {
             }
             .backgroundColor(.red)
             .width(100, unit: .percentage)
+            
+            zstack(vAlign: .center, hAlign: .center) {
+                h1("ZStack Test")
+                h2("aaa")
+                    .color(.red)
+            }
+            .backgroundColor(.cyan)
+            .width(100, unit: .percentage)
+            .height(300, unit: .px)
             MediaQuery(.minWidth, value: "800px") {
                 h2("media query")
                     .width(200, unit: .px)
