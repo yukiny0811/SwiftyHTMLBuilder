@@ -2,36 +2,36 @@
 //  File.swift
 //  
 //
-//  Created by Yuki Kuwashima on 2023/10/06.
+//  Created by Yuki Kuwashima on 2024/02/01.
 //
 
 import Foundation
 
 @resultBuilder
 public struct HTMLBuilder {
-    public static func buildBlock(_ component: HTMLBase) -> [HTMLBase] {
+    public static func buildBlock(_ component: HTMLBlock) -> [HTMLBlock] {
         [component]
     }
-    public static func buildBlock(_ components: HTMLBase...) -> [HTMLBase] {
+    public static func buildBlock(_ components: HTMLBlock...) -> [HTMLBlock] {
         components
     }
-    public static func buildBlock(_ components: [HTMLBase]) -> [HTMLBase] {
+    public static func buildBlock(_ components: [HTMLBlock]) -> [HTMLBlock] {
         components
     }
-    public static func buildBlock(_ components: [HTMLBase], _ components2: [HTMLBase]) -> [HTMLBase] {
+    public static func buildBlock(_ components: [HTMLBlock], _ components2: [HTMLBlock]) -> [HTMLBlock] {
         components + components2
     }
-    public static func buildOptional(_ component: [HTMLBase]?) -> HTMLBase {
+    public static func buildOptional(_ component: [HTMLBlock]?) -> HTMLBlock {
         if let c = component {
-            return transparentGroup{c}
+            return group{c}
         } else {
-            return transparentGroup{[""]}
+            return group{[empty()]}
         }
     }
-    public static func buildArray(_ components: [HTMLBase]) -> HTMLBase {
-        transparentGroup{components}
+    public static func buildArray(_ components: [HTMLBlock]) -> HTMLBlock {
+        group{components}
     }
-    public static func buildArray(_ components: [[HTMLBase]]) -> HTMLBase {
-        transparentGroup{components.map{v in transparentGroup{v}}}
+    public static func buildArray(_ components: [[HTMLBlock]]) -> HTMLBlock {
+        group{components.map{v in group{v}}}
     }
 }
