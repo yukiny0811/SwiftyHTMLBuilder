@@ -30,10 +30,22 @@ class MyHtml: HTML {
 class MyBody: HTML {
     var content: HTMLBlock {
         body {
-            p("this is p")
+            h1("this is h1")
             a(href: "https://github.com/yukiny0811/SwiftyHTMLBuilder") {
                 text("this is link")
-                text("SwiftyHTMLBuilder")
+            }
+            MediaQuery(.minWidth, value: "800px") {
+                h2("media query")
+                    .width(200, unit: .px)
+                    .color(.white)
+                    .backgroundColor(.blue)
+                    .css("display", "block")
+            } falseContents: {
+                h2("media query")
+                    .width(200, unit: .px)
+                    .color(.white)
+                    .backgroundColor(.green)
+                    .css("display", "block")
             }
         }
     }
